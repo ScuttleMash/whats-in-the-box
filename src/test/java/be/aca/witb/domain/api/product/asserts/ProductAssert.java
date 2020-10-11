@@ -8,6 +8,7 @@ import org.assertj.core.api.AbstractAssert;
 import be.aca.witb.domain.api.product.Product;
 import be.aca.witb.domain.api.product.ProductName;
 import be.aca.witb.domain.api.product.ProductPrice;
+import be.aca.witb.domain.api.product.ProductStock;
 
 public final class ProductAssert extends AbstractAssert<ProductAssert, Product> {
 
@@ -22,6 +23,11 @@ public final class ProductAssert extends AbstractAssert<ProductAssert, Product> 
 
 	public ProductAssert hasPrice(ProductPrice expected) {
 		assertThat(actual.getPrice()).isEqualTo(expected.getValue(), offset(0.01));
+		return this;
+	}
+
+	public ProductAssert hasStock(ProductStock expected) {
+		assertThat(actual.getStock()).isEqualTo(expected.getValue());
 		return this;
 	}
 

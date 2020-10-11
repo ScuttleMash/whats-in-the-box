@@ -1,6 +1,8 @@
 package be.aca.witb.domain.api.product.mothers;
 
 import static be.aca.witb.domain.api.product.builders.CreateProductRequestTestBuilder.aCreateProductRequestTestBuilder;
+import static be.aca.witb.domain.api.product.builders.ProductStockTestBuilder.aProductStock;
+import static be.aca.witb.domain.api.product.builders.UpdateProductStockRequestTestBuilder.anUpdateProductStockRequest;
 
 import java.util.UUID;
 
@@ -15,7 +17,7 @@ import be.aca.witb.domain.internal.product.DefaultCreateProductUseCase;
 import be.aca.witb.domain.internal.product.DefaultProductRepository;
 import be.aca.witb.domain.internal.product.DefaultUpdateProductStockUseCase;
 
-public class ProductMother {
+public final class ProductMother {
 
 	private final CreateProductUseCase createProductUseCase;
 	private final UpdateProductStockUseCase updateProductStockUseCase;
@@ -42,7 +44,9 @@ public class ProductMother {
 		return getProduct().getIdentifier();
 	}
 
-	public void updateStock(UpdateProductStockRequest request) {
+	public void updateStock(int amount) {
+		UpdateProductStockRequest request =
+				anUpdateProductStockRequest().withProductStock(aProductStock().withValue(amount).build()).build();
 		updateProductStockUseCase.execute(getIdentifier(), request);
 	}
 }

@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-import be.aca.witb.domain.utility.validation.exceptions.StringIsBlankException;
-import be.aca.witb.domain.utility.validation.exceptions.StringIsTooLongException;
+import be.aca.witb.utility.validation.exceptions.StringIsBlankException;
+import be.aca.witb.utility.validation.exceptions.StringIsTooLongException;
 
 public class ProductNameTest {
 

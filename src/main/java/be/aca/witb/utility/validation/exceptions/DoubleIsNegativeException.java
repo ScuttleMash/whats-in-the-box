@@ -1,4 +1,4 @@
-package be.aca.witb.domain.utility.validation.exceptions;
+package be.aca.witb.utility.validation.exceptions;
 
 public class DoubleIsNegativeException extends RuntimeException {
 

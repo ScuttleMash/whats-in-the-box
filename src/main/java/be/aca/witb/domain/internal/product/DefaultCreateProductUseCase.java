@@ -1,6 +1,6 @@
 package be.aca.witb.domain.internal.product;
 
-import static be.aca.witb.domain.utility.validation.Validator.isNotNull;
+import static be.aca.witb.utility.validation.Validator.isNotNull;
 
 import be.aca.witb.domain.api.product.CreateProductRequest;
 import be.aca.witb.domain.api.product.CreateProductUseCase;

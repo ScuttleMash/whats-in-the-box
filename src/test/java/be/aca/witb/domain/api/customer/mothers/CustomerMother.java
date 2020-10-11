@@ -7,7 +7,7 @@ import be.aca.witb.domain.api.customer.CreateCustomerUseCase;
 import be.aca.witb.domain.api.customer.CustomerIdentifier;
 import be.aca.witb.domain.internal.customer.DefaultCreateCustomerUseCase;
 
-public class CustomerMother {
+public final class CustomerMother {
 
 	private final CreateCustomerUseCase createCustomerUseCase;
 

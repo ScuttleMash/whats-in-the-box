@@ -4,7 +4,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 
 import be.aca.witb.domain.api.customer.CustomerName;
 
-public class CustomerNameTestBuilder {
+public final class CustomerNameTestBuilder {
 
 	private static final int MIN_LENGTH_INCLUSIVE = 1;
 	private static final int MAX_LENGTH_EXCLUSIVE = 31;

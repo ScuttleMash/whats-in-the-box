@@ -1,11 +1,13 @@
 package be.aca.witb.domain.internal.product;
 
-import static java.util.UUID.*;
+import static java.util.UUID.fromString;
+import static java.util.UUID.randomUUID;
 
 import be.aca.witb.domain.api.product.CreateProductRequest;
 import be.aca.witb.domain.api.product.Product;
 import be.aca.witb.domain.api.product.ProductIdentifier;
 import be.aca.witb.domain.api.product.UpdateProductNameRequest;
+import be.aca.witb.domain.api.product.UpdateProductStockRequest;
 
 public class ProductEntity implements Product {
 
@@ -50,6 +52,14 @@ public class ProductEntity implements Product {
 	}
 
 	public void updateName(UpdateProductNameRequest request) {
-		this.name = request.getProductName().getValue();
+		name = request.getProductName().getValue();
+	}
+
+	public boolean hasAmountInStock(int amountRequested) {
+		return stock >= amountRequested;
+	}
+
+	public void updateStock(UpdateProductStockRequest request) {
+		stock = request.getProductStock().getValue();
 	}
 }

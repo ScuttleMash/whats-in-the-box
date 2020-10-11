@@ -1,6 +1,6 @@
 package be.aca.witb.domain.api.customer;
 
-import static be.aca.witb.domain.utility.validation.Validator.isNotNull;
+import static be.aca.witb.utility.validation.Validator.isNotNull;
 
 public final class CreateCustomerRequest {
 

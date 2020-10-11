@@ -3,24 +3,28 @@ package be.aca.witb.domain.internal.order;
 import static java.util.UUID.fromString;
 import static java.util.UUID.randomUUID;
 
+import java.util.List;
+
+import be.aca.witb.domain.api.order.Order;
 import be.aca.witb.domain.api.order.OrderIdentifier;
 import be.aca.witb.domain.internal.customer.CustomerEntity;
-import be.aca.witb.domain.internal.product.ProductEntity;
 
-public class OrderEntity {
+public class OrderEntity implements Order {
+
+	private static final int LARGE_ORDER_TRESHOLD = 5;
 
 	private String uuid;
 	private int version;
 
-	private ProductEntity product;
 	private CustomerEntity customer;
+	private List<OrderLineEntity> orderLines;
 
-	public OrderEntity(ProductEntity product, CustomerEntity customer) {
+	public OrderEntity(CustomerEntity customer, List<OrderLineEntity> orderLines) {
 		uuid = randomUUID().toString();
 		version = 1;
 
-		this.product = product;
 		this.customer = customer;
+		this.orderLines = orderLines;
 	}
 
 	public OrderIdentifier getIdentifier() {
@@ -29,5 +33,10 @@ public class OrderEntity {
 
 	public void bumpVersion() {
 		version++;
+	}
+
+	@Override
+	public boolean canBeFulfilled() {
+		return orderLines.stream().allMatch(item -> item.getProduct().hasAmountInStock(item.getAmount()));
 	}
 }

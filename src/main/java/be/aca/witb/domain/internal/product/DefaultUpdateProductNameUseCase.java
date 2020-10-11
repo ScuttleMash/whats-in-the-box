@@ -1,6 +1,6 @@
 package be.aca.witb.domain.internal.product;
 
-import static be.aca.witb.domain.utility.validation.Validator.isNotNull;
+import static be.aca.witb.utility.validation.Validator.isNotNull;
 
 import be.aca.witb.domain.api.product.ProductIdentifier;
 import be.aca.witb.domain.api.product.UpdateProductNameRequest;
@@ -21,6 +21,7 @@ public class DefaultUpdateProductNameUseCase implements UpdateProductNameUseCase
 
 		ProductEntity product = productRepository.get(identifier);
 		product.updateName(request);
+
 		productRepository.save(product);
 		return product.getIdentifier();
 	}

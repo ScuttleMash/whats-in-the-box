@@ -5,7 +5,7 @@ import static org.apache.commons.lang3.RandomUtils.nextInt;
 
 import be.aca.witb.domain.api.product.ProductIdentifier;
 
-public class ProductIdentifierTestBuilder {
+public final class ProductIdentifierTestBuilder {
 
 	public static ProductIdentifier aProductIdentifier() {
 		return new ProductIdentifier(randomUUID(), nextInt());

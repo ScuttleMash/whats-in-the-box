@@ -5,7 +5,7 @@ import static be.aca.witb.domain.api.customer.builders.CustomerNameTestBuilder.a
 import be.aca.witb.domain.api.customer.CreateCustomerRequest;
 import be.aca.witb.domain.api.customer.CustomerName;
 
-public class CreateCustomerRequestTestBuilder {
+public final class CreateCustomerRequestTestBuilder {
 
 	private CustomerName customerName;
 

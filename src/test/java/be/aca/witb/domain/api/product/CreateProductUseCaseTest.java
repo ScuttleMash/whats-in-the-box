@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import be.aca.witb.domain.internal.product.DefaultCreateProductUseCase;
 import be.aca.witb.domain.internal.product.DefaultProductRepository;
-import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
 
 public class CreateProductUseCaseTest {
 

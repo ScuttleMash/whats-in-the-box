@@ -1,7 +1,7 @@
 package be.aca.witb.domain.api.product;
 
-import static be.aca.witb.domain.utility.validation.Validator.hasMaxLength;
-import static be.aca.witb.domain.utility.validation.Validator.isNotBlank;
+import static be.aca.witb.utility.validation.Validator.hasMaxLength;
+import static be.aca.witb.utility.validation.Validator.isNotBlank;
 
 public final class ProductName {
 
