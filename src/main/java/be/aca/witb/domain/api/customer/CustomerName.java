@@ -1,17 +1,17 @@
-package be.aca.witb.domain.api.product;
+package be.aca.witb.domain.api.customer;
 
 import static be.aca.witb.utility.validation.Validator.hasMaxLength;
 import static be.aca.witb.utility.validation.Validator.isNotBlank;
 
-public final class ProductName {
+public class CustomerName {
 
-	private static final int MAX_PRODUCT_NAME_LENGTH = 20;
+	private static final int MAX_CUSTOMER_NAME_LENGTH = 30;
 
 	private final String value;
 
-	public ProductName(String value) {
+	public CustomerName(String value) {
 		isNotBlank(value);
-		hasMaxLength(value, MAX_PRODUCT_NAME_LENGTH);
+		hasMaxLength(value, MAX_CUSTOMER_NAME_LENGTH);
 
 		this.value = value;
 	}
@@ -19,4 +19,5 @@ public final class ProductName {
 	public String getValue() {
 		return value;
 	}
+
 }

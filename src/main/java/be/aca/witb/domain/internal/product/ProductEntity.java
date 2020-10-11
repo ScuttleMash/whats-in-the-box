@@ -14,6 +14,7 @@ public class ProductEntity implements Product {
 
 	private String name;
 	private double price;
+	private int stock;
 
 	public ProductEntity(CreateProductRequest request) {
 		uuid = randomUUID().toString();
@@ -21,6 +22,7 @@ public class ProductEntity implements Product {
 
 		name = request.getName().getValue();
 		price = request.getPrice().getValue();
+		stock = 0;
 	}
 
 	@Override
@@ -36,6 +38,11 @@ public class ProductEntity implements Product {
 	@Override
 	public double getPrice() {
 		return price;
+	}
+
+	@Override
+	public int getStock() {
+		return stock;
 	}
 
 	public void bumpVersion() {

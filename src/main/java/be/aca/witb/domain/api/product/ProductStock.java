@@ -2,17 +2,17 @@ package be.aca.witb.domain.api.product;
 
 import static be.aca.witb.utility.validation.Validator.isNotNegative;
 
-public final class ProductPrice {
+public final class ProductStock {
 
-	private final double value;
+	private final int value;
 
-	public ProductPrice(double value) {
+	public ProductStock(int value) {
 		isNotNegative(value);
 
 		this.value = value;
 	}
 
-	public double getValue() {
+	public int getValue() {
 		return value;
 	}
 }

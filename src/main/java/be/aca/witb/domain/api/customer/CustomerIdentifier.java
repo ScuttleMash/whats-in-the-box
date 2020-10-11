@@ -1,9 +1,10 @@
 package be.aca.witb.domain.api.customer;
 
+import static be.aca.witb.utility.validation.Validator.isNotNegative;
+import static be.aca.witb.utility.validation.Validator.isNotNull;
+
 import java.util.Objects;
 import java.util.UUID;
-
-import be.aca.witb.utility.validation.Validator;
 
 public final class CustomerIdentifier {
 
@@ -11,8 +12,8 @@ public final class CustomerIdentifier {
 	private final int version;
 
 	public CustomerIdentifier(UUID uuid, int version) {
-		Validator.isNotNull(uuid);
-		Validator.isNotNegative(version);
+		isNotNull(uuid);
+		isNotNegative(version);
 
 		this.uuid = uuid;
 		this.version = version;

@@ -30,3 +30,4 @@ public final class ProductAssert extends AbstractAssert<ProductAssert, Product> 
 		return new ProductAssert(product);
 	}
 }
+

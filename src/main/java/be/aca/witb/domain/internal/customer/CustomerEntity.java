@@ -3,6 +3,7 @@ package be.aca.witb.domain.internal.customer;
 import static java.util.UUID.fromString;
 import static java.util.UUID.randomUUID;
 
+import be.aca.witb.domain.api.customer.CreateCustomerRequest;
 import be.aca.witb.domain.api.customer.CustomerIdentifier;
 
 public class CustomerEntity {
@@ -11,14 +12,12 @@ public class CustomerEntity {
 	private int version;
 
 	private String name;
-	private String phoneNumber;
 
-	public CustomerEntity() {
+	public CustomerEntity(CreateCustomerRequest request) {
 		uuid = randomUUID().toString();
 		version = 1;
 
-		name = "";
-		phoneNumber = "";
+		name = request.getName().getValue();
 	}
 
 	public CustomerIdentifier getIdentifier() {
@@ -27,5 +26,9 @@ public class CustomerEntity {
 
 	public void bumpVersion() {
 		version++;
+	}
+
+	public String getName() {
+		return name;
 	}
 }

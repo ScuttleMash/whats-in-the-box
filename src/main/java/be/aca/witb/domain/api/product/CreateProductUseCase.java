@@ -5,3 +5,5 @@ public interface CreateProductUseCase {
 	ProductIdentifier execute(CreateProductRequest request);
 
 }
+
+

@@ -6,25 +6,24 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import be.aca.witb.domain.api.AbstractPersistenceTest;
+import be.aca.witb.domain.api.product.mothers.ProductMother;
 import be.aca.witb.domain.internal.product.DefaultCreateProductUseCase;
 import be.aca.witb.domain.internal.product.DefaultProductRepository;
 import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
 
-public class CreateProductUseCaseTest {
+public class CreateProductUseCaseTest extends AbstractPersistenceTest {
 
+	@Autowired
 	private CreateProductUseCase createProductUseCase;
 
+	@Autowired
 	private ProductRepository productRepository;
 
-	@BeforeEach
-	public void setup() {
-		createProductUseCase = new DefaultCreateProductUseCase();
-		productRepository = new DefaultProductRepository();
-	}
-
 	@Test
-	public void createsProductWhenRequestIsValid() {
+	public void createsProductUsingRequestValues() {
 		CreateProductRequest request = aCreateProductRequestTestBuilder().build();
 
 		ProductIdentifier identifier = createProductUseCase.execute(request);
@@ -34,16 +33,7 @@ public class CreateProductUseCaseTest {
 	}
 
 	@Test
-	public void throwsExceptionWhenProductNameIsNull() {
-		CreateProductRequest request = aCreateProductRequestTestBuilder().withProductName(null).build();
-
-		assertThatThrownBy(() -> createProductUseCase.execute(request)).isInstanceOf(ObjectIsNullException.class);
-	}
-
-	@Test
-	public void throwsExceptionWhenProductPriceIsNull() {
-		CreateProductRequest request = aCreateProductRequestTestBuilder().withProductPrice(null).build();
-
-		assertThatThrownBy(() -> createProductUseCase.execute(request)).isInstanceOf(ObjectIsNullException.class);
+	public void throwsExceptionWhenRequestIsNull() {
+		assertThatThrownBy(() -> createProductUseCase.execute(null)).isInstanceOf(ObjectIsNullException.class);
 	}
 }

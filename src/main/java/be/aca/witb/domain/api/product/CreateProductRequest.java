@@ -1,6 +1,6 @@
 package be.aca.witb.domain.api.product;
 
-import be.aca.witb.utility.validation.Validator;
+import static be.aca.witb.utility.validation.Validator.isNotNull;
 
 public final class CreateProductRequest {
 
@@ -8,8 +8,8 @@ public final class CreateProductRequest {
 	private final ProductPrice price;
 
 	public CreateProductRequest(ProductName name, ProductPrice price) {
-		Validator.isNotNull(name);
-		Validator.isNotNull(price);
+		isNotNull(name);
+		isNotNull(price);
 
 		this.name = name;
 		this.price = price;

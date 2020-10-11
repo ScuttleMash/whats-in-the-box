@@ -2,36 +2,35 @@ package be.aca.witb.domain.api.product;
 
 import static be.aca.witb.domain.api.product.asserts.ProductAssert.assertThatProduct;
 import static be.aca.witb.domain.api.product.builders.ProductIdentifierTestBuilder.aProductIdentifier;
+import static be.aca.witb.domain.api.product.builders.ProductNameTestBuilder.aProductName;
 import static be.aca.witb.domain.api.product.builders.UpdateProductNameRequestTestBuilder.anUpdateProductNameRequestTestBuilder;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import be.aca.witb.domain.api.AbstractPersistenceTest;
 import be.aca.witb.domain.api.product.mothers.ProductMother;
-import be.aca.witb.domain.internal.product.DefaultUpdateProductNameUseCase;
 import be.aca.witb.domain.internal.product.exceptions.ProductNotFoundException;
 import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
 
-public class UpdateProductNameUseCaseTest {
+public class UpdateProductNameUseCaseTest extends AbstractPersistenceTest {
 
+	@Autowired
 	private ProductMother productMother;
+
+	@Autowired
 	private UpdateProductNameUseCase updateProductNameUseCase;
 
-	@BeforeEach
-	public void setup() {
-		updateProductNameUseCase = new DefaultUpdateProductNameUseCase();
-		productMother = new ProductMother();
-	}
-
 	@Test
-	public void setsNameToRequestValue() {
+	public void updatesNameOfProduct() {
 		productMother.setup();
-		UpdateProductNameRequest request = anUpdateProductNameRequestTestBuilder().build();
+		ProductName updatedName = aProductName();
+		UpdateProductNameRequest request = anUpdateProductNameRequestTestBuilder().withProductName(updatedName).build();
 
-		updateProductNameUseCase.execute(productMother.getProduct().getIdentifier(), request);
+		updateProductNameUseCase.execute(productMother.getIdentifier(), request);
 
-		assertThatProduct(productMother.getProduct()).hasName(request.getProductName());
+		assertThatProduct(productMother.getProduct()).hasName(updatedName);
 	}
 
 	@Test
