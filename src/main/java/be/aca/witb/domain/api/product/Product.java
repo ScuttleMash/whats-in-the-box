@@ -8,5 +8,7 @@ public interface Product {
 
 	double getPrice();
 
+	boolean hasStock();
+
 	int getStock();
 }

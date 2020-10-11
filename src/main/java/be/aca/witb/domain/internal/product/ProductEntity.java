@@ -43,6 +43,11 @@ public class ProductEntity implements Product {
 	}
 
 	@Override
+	public boolean hasStock() {
+		return stock > 0;
+	}
+
+	@Override
 	public int getStock() {
 		return stock;
 	}

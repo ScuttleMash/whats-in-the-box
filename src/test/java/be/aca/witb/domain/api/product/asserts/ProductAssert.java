@@ -31,6 +31,12 @@ public final class ProductAssert extends AbstractAssert<ProductAssert, Product> 
 		return this;
 	}
 
+	public ProductAssert hasNoStock() {
+		assertThat(actual.hasStock()).isFalse();
+		assertThat(actual.getStock()).isEqualTo(0);
+		return this;
+	}
+
 	public static ProductAssert assertThatProduct(Product product) {
 		assertThat(product).isNotNull();
 		return new ProductAssert(product);

@@ -23,15 +23,8 @@ public class CreateOrderUseCaseTest {
 	private OrderRepository orderRepository;
 
 	private ProductMother bottleOfWater;
+	private ProductMother caseOfOranges;
 	private CustomerMother johnDoe;
-
-	@BeforeEach
-	public void setup() {
-		createOrderUseCase = new DefaultCreateOrderUseCase();
-		orderRepository = new DefaultOrderRepository();
-		bottleOfWater = new ProductMother();
-		johnDoe = new CustomerMother();
-	}
 
 	@Test
 	public void createsOrderThatCanBeFulfilledWhenStockIsAvailable() {
@@ -68,6 +61,28 @@ public class CreateOrderUseCaseTest {
 	}
 
 	@Test
+	public void createsOrderWithMultipleProducts() {
+		bottleOfWater.setup();
+		caseOfOranges.setup();
+		johnDoe.setup();
+		OrderLineRequest bottleOfWaterRequest = anOrderLineRequestTestBuilder()
+				.withProductIdentifier(bottleOfWater.getIdentifier()).withAmount(10).build();
+		OrderLineRequest caseOfOrangesRequest = anOrderLineRequestTestBuilder()
+				.withProductIdentifier(caseOfOranges.getIdentifier()).withAmount(1).build();
+		CreateOrderRequest request = aCreateOrderRequestTestBuilder()
+				.withCustomerIdentifier(johnDoe.getIdentifier())
+				.withOrderLineRequests(of(bottleOfWaterRequest, caseOfOrangesRequest)).build();
+
+		OrderIdentifier orderIdentifier = createOrderUseCase.execute(request);
+
+		Order order = orderRepository.get(orderIdentifier);
+		assertThatOrder(order)
+				.containsItems(2)
+				.containsItem(bottleOfWater.getIdentifier(), 10)
+				.containsItem(caseOfOranges.getIdentifier(), 1);
+	}
+
+	@Test
 	public void throwsExceptionWhenCustomerDoesNotExist() {
 		CreateOrderRequest request = aCreateOrderRequestTestBuilder().build();
 
@@ -87,4 +102,15 @@ public class CreateOrderUseCaseTest {
 	public void throwsExceptionWhenRequestIsNull() {
 		assertThatThrownBy(() -> createOrderUseCase.execute(null)).isInstanceOf(ObjectIsNullException.class);
 	}
+
+	@BeforeEach
+	public void setup() {
+		createOrderUseCase = new DefaultCreateOrderUseCase();
+		orderRepository = new DefaultOrderRepository();
+
+		bottleOfWater = new ProductMother();
+		caseOfOranges = new ProductMother();
+		johnDoe = new CustomerMother();
+	}
+
 }

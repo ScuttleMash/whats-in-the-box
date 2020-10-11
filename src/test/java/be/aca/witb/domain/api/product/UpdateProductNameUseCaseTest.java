@@ -16,24 +16,27 @@ import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
 
 public class UpdateProductNameUseCaseTest {
 
-	private ProductMother productMother;
 	private UpdateProductNameUseCase updateProductNameUseCase;
 
 	@BeforeEach
 	public void setup() {
-		productMother = new ProductMother();
+		bottleOfWater = new ProductMother();
 		updateProductNameUseCase = new DefaultUpdateProductNameUseCase();
 	}
 
+	private ProductMother bottleOfWater;
+
 	@Test
 	public void updatesNameOfProduct() {
-		productMother.setup();
+		bottleOfWater.setup();
 		ProductName updatedName = aProductName();
-		UpdateProductNameRequest request = anUpdateProductNameRequestTestBuilder().withProductName(updatedName).build();
+		UpdateProductNameRequest request = anUpdateProductNameRequestTestBuilder()
+				.withProductName(updatedName)
+				.build();
 
-		updateProductNameUseCase.execute(productMother.getIdentifier(), request);
+		updateProductNameUseCase.execute(bottleOfWater.getIdentifier(), request);
 
-		assertThatProduct(productMother.getProduct()).hasName(updatedName);
+		assertThatProduct(bottleOfWater.getProduct()).hasName(updatedName);
 	}
 
 	@Test

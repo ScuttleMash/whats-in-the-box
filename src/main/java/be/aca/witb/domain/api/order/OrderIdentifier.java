@@ -19,6 +19,14 @@ public final class OrderIdentifier {
 		this.version = version;
 	}
 
+	public UUID getUuid() {
+		return uuid;
+	}
+
+	public boolean hasUuid(UUID uuid) {
+		return this.uuid.equals(uuid);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)

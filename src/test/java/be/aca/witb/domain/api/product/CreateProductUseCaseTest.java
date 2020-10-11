@@ -33,6 +33,16 @@ public class CreateProductUseCaseTest {
 	}
 
 	@Test
+	public void productIsCreatedWithNoStock() {
+		CreateProductRequest request = aCreateProductRequestTestBuilder().build();
+
+		ProductIdentifier identifier = createProductUseCase.execute(request);
+
+		Product product = productRepository.get(identifier);
+		assertThatProduct(product).hasNoStock();
+	}
+
+	@Test
 	public void throwsExceptionWhenRequestIsNull() {
 		assertThatThrownBy(() -> createProductUseCase.execute(null)).isInstanceOf(ObjectIsNullException.class);
 	}
