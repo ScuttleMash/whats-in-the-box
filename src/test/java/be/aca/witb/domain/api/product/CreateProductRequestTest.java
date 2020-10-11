@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
 
 public class CreateProductRequestTest {
 

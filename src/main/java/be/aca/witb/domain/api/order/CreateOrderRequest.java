@@ -1,6 +1,6 @@
 package be.aca.witb.domain.api.order;
 
-import static be.aca.witb.utility.validation.Validator.isNotNull;
+import static be.aca.witb.domain.utility.validation.Validator.isNotNull;
 
 import be.aca.witb.domain.api.customer.CustomerIdentifier;
 import be.aca.witb.domain.api.product.ProductIdentifier;

@@ -1,12 +1,12 @@
-package be.aca.witb.utility.validation;
+package be.aca.witb.domain.utility.validation;
 
 import org.apache.commons.lang3.StringUtils;
 
-import be.aca.witb.utility.validation.exceptions.DoubleIsNegativeException;
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
-import be.aca.witb.utility.validation.exceptions.StringIsBlankException;
-import be.aca.witb.utility.validation.exceptions.StringIsTooLongException;
-import be.aca.witb.utility.validation.exceptions.IntegerIsNegativeException;
+import be.aca.witb.domain.utility.validation.exceptions.DoubleIsNegativeException;
+import be.aca.witb.domain.utility.validation.exceptions.IntegerIsNegativeException;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.utility.validation.exceptions.StringIsBlankException;
+import be.aca.witb.domain.utility.validation.exceptions.StringIsTooLongException;
 
 public class Validator {
 

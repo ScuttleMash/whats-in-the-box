@@ -6,21 +6,24 @@ import static be.aca.witb.domain.api.product.builders.ProductNameTestBuilder.aPr
 import static be.aca.witb.domain.api.product.builders.UpdateProductNameRequestTestBuilder.anUpdateProductNameRequestTestBuilder;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import be.aca.witb.domain.api.AbstractPersistenceTest;
 import be.aca.witb.domain.api.product.mothers.ProductMother;
+import be.aca.witb.domain.internal.product.DefaultUpdateProductNameUseCase;
 import be.aca.witb.domain.internal.product.exceptions.ProductNotFoundException;
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
 
-public class UpdateProductNameUseCaseTest extends AbstractPersistenceTest {
+public class UpdateProductNameUseCaseTest {
 
-	@Autowired
 	private ProductMother productMother;
-
-	@Autowired
 	private UpdateProductNameUseCase updateProductNameUseCase;
+
+	@BeforeEach
+	public void setup() {
+		productMother = new ProductMother();
+		updateProductNameUseCase = new DefaultUpdateProductNameUseCase();
+	}
 
 	@Test
 	public void updatesNameOfProduct() {

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.Test;
 
-import be.aca.witb.utility.validation.exceptions.DoubleIsNegativeException;
+import be.aca.witb.domain.utility.validation.exceptions.DoubleIsNegativeException;
 
 public class ProductPriceTest {
 

@@ -2,22 +2,24 @@ package be.aca.witb.domain.internal.customer;
 
 import static be.aca.witb.domain.api.customer.builders.CreateCustomerRequestTestBuilder.aCreateCustomerRequestTestBuilder;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import be.aca.witb.domain.api.AbstractPersistenceTest;
 import be.aca.witb.domain.api.customer.CreateCustomerRequest;
 import be.aca.witb.domain.api.customer.CreateCustomerUseCase;
 import be.aca.witb.domain.api.customer.CustomerIdentifier;
 import be.aca.witb.domain.internal.customer.asserts.UglyCustomerAssert;
 
-public class UglyCreateCustomerUseCaseTest extends AbstractPersistenceTest {
+public class UglyCreateCustomerUseCaseTest {
 
-	@Autowired
 	private CreateCustomerUseCase createCustomerUseCase;
-
-	@Autowired
 	private DefaultCustomerRepository defaultCustomerRepository;
+
+	@BeforeEach
+	public void setup() {
+		createCustomerUseCase = new DefaultCreateCustomerUseCase();
+		defaultCustomerRepository = new DefaultCustomerRepository();
+	}
 
 	@Test
 	public void createsCustomerUsingRequestValues() {

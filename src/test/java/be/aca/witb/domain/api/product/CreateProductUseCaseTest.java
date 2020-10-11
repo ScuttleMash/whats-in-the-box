@@ -6,21 +6,21 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import be.aca.witb.domain.api.AbstractPersistenceTest;
-import be.aca.witb.domain.api.product.mothers.ProductMother;
 import be.aca.witb.domain.internal.product.DefaultCreateProductUseCase;
 import be.aca.witb.domain.internal.product.DefaultProductRepository;
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
 
-public class CreateProductUseCaseTest extends AbstractPersistenceTest {
+public class CreateProductUseCaseTest {
 
-	@Autowired
 	private CreateProductUseCase createProductUseCase;
-
-	@Autowired
 	private ProductRepository productRepository;
+
+	@BeforeEach
+	public void setup() {
+		createProductUseCase = new DefaultCreateProductUseCase();
+		productRepository = new DefaultProductRepository();
+	}
 
 	@Test
 	public void createsProductUsingRequestValues() {

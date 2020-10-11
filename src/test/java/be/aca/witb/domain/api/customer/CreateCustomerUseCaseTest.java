@@ -2,16 +2,20 @@ package be.aca.witb.domain.api.customer;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 
-import be.aca.witb.domain.api.AbstractPersistenceTest;
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.internal.customer.DefaultCreateCustomerUseCase;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
 
-public class CreateCustomerUseCaseTest extends AbstractPersistenceTest {
+public class CreateCustomerUseCaseTest {
 
-	@Autowired
 	private CreateCustomerUseCase createCustomerUseCase;
+
+	@BeforeEach
+	public void setup() {
+		createCustomerUseCase = new DefaultCreateCustomerUseCase();
+	}
 
 	@Test
 	public void throwsExceptionWhenRequestIsNull() {

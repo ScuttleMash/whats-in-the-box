@@ -15,7 +15,7 @@ public class UglyCustomerAssert extends AbstractAssert<UglyCustomerAssert, Custo
 	}
 
 	public UglyCustomerAssert hasName(CustomerName expected) {
-		assertThat(actual.getIdentifier()).isEqualTo(expected.getValue());
+		assertThat(actual.getName()).isEqualTo(expected.getValue());
 		return this;
 	}
 	public static UglyCustomerAssert assertThatCustomer(CustomerEntity customer) {

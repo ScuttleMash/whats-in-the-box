@@ -10,8 +10,8 @@ import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
 
-import be.aca.witb.utility.validation.exceptions.IntegerIsNegativeException;
-import be.aca.witb.utility.validation.exceptions.ObjectIsNullException;
+import be.aca.witb.domain.utility.validation.exceptions.IntegerIsNegativeException;
+import be.aca.witb.domain.utility.validation.exceptions.ObjectIsNullException;
 
 public abstract class AbstractIdentifierTest<T> {
 

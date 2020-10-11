@@ -4,9 +4,6 @@ import static be.aca.witb.domain.api.product.builders.CreateProductRequestTestBu
 
 import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import be.aca.witb.domain.api.product.CreateProductRequest;
 import be.aca.witb.domain.api.product.CreateProductUseCase;
 import be.aca.witb.domain.api.product.Product;
@@ -14,8 +11,10 @@ import be.aca.witb.domain.api.product.ProductIdentifier;
 import be.aca.witb.domain.api.product.ProductRepository;
 import be.aca.witb.domain.api.product.UpdateProductStockRequest;
 import be.aca.witb.domain.api.product.UpdateProductStockUseCase;
+import be.aca.witb.domain.internal.product.DefaultCreateProductUseCase;
+import be.aca.witb.domain.internal.product.DefaultProductRepository;
+import be.aca.witb.domain.internal.product.DefaultUpdateProductStockUseCase;
 
-@Component
 public class ProductMother {
 
 	private final CreateProductUseCase createProductUseCase;
@@ -24,12 +23,10 @@ public class ProductMother {
 
 	private UUID uuid;
 
-	@Autowired
-	public ProductMother(CreateProductUseCase createProductUseCase, UpdateProductStockUseCase updateProductStockUseCase,
-			ProductRepository productRepository) {
-		this.createProductUseCase = createProductUseCase;
-		this.updateProductStockUseCase = updateProductStockUseCase;
-		this.productRepository = productRepository;
+	public ProductMother() {
+		this.createProductUseCase = new DefaultCreateProductUseCase();
+		this.updateProductStockUseCase = new DefaultUpdateProductStockUseCase();
+		this.productRepository = new DefaultProductRepository();
 	}
 
 	public void setup() {

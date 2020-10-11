@@ -16,13 +16,6 @@ open module be.aca.witb.domain {
 	exports be.aca.witb.domain.api.product;
 
 	requires org.apache.commons.lang3;
-	requires java.sql;
-	requires spring.beans;
-	requires spring.context;
-	requires spring.core;
-	requires spring.data.jpa;
-	requires spring.jdbc;
-	requires spring.tx;
 
 	provides CreateCustomerUseCase with DefaultCreateCustomerUseCase;
 	provides CreateProductUseCase with DefaultCreateProductUseCase;

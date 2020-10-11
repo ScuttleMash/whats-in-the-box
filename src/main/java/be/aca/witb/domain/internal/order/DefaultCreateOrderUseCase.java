@@ -1,6 +1,6 @@
 package be.aca.witb.domain.internal.order;
 
-import static be.aca.witb.utility.validation.Validator.isNotNull;
+import static be.aca.witb.domain.utility.validation.Validator.isNotNull;
 
 import be.aca.witb.domain.api.order.CreateOrderRequest;
 import be.aca.witb.domain.api.order.CreateOrderUseCase;

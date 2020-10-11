@@ -1,6 +1,6 @@
 package be.aca.witb.domain.api.product;
 
-import static be.aca.witb.utility.validation.Validator.isNotNegative;
+import static be.aca.witb.domain.utility.validation.Validator.isNotNegative;
 
 public final class ProductStock {
 
